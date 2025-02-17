@@ -5,7 +5,7 @@ function LotteryTicket({selectedNumbers, cashTotal}) {
 
     return (
         <div className="lottery-ticket">
-            <h2>Lottery Ticket</h2>
+            <h2>Numbers Selected</h2>
             <ul className = "number-list">
                 {selectedNumbers.map((number, index) => (
                     <li key={index}> Derek: {number}</li>
