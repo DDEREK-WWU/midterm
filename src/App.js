@@ -2,9 +2,12 @@ import React , {useState} from 'react';
 import './App.css';
 import NumberSelector from './NumberSelector';
 import LotteryTicket from './LotteryTicket';
+import CashInput from './CashInput';
+
 
 function App() {
   const [selectedNumbers, setSelectedNumbers] = useState([]);
+  const [cashTotal, setCashTotal] = useState(0);
 
   const handleNumberClick = (number) => {
     if (selectedNumbers.includes(number)) {
@@ -18,7 +21,8 @@ function App() {
   
   const clearNumbers = () => {
     setSelectedNumbers([]);
-  }
+    setCashTotal(0);
+  };
   
   const randomNumbers = () => {
     const numbers = [];
@@ -33,18 +37,35 @@ function App() {
 
 
 
-
   return (
+
     <div className="App">
-      <h1>Number Selector</h1>
-        <NumberSelector 
-          selectedNumbers={selectedNumbers} 
-          onNumberClick={handleNumberClick}
-          onClearNumbers={clearNumbers}
-          onRandomNumbers={randomNumbers}
+      <h1>WHE WHE on D' Avenue</h1>
+      <div className="main-container">
+        <div className="left-column">
+        <h2>Choose 5 numbers</h2>
+          <NumberSelector 
+            selectedNumbers={selectedNumbers} 
+            onNumberClick={handleNumberClick}
+            onClearNumbers={clearNumbers}
+            onRandomNumbers={randomNumbers}
+            cashTotal={cashTotal}
           />
-        <LotteryTicket selectedNumbers={selectedNumbers}/>
+          <CashInput 
+            cashTotal={cashTotal} 
+            setCashTotal={setCashTotal} 
+            selectedNumbers={selectedNumbers} 
+          />
+        </div>
+        <div className="right-column">
+          <LotteryTicket 
+            selectedNumbers={selectedNumbers} 
+            cashTotal={cashTotal} 
+          />
+        </div>
+      </div>
     </div>
+
   );
 }
 

@@ -1,16 +1,17 @@
 import React from "react";
 
-function LotteryTicket({selectedNumbers}) {
+function LotteryTicket({selectedNumbers, cashTotal}) {
 
 
     return (
         <div className="lottery-ticket">
             <h2>Lottery Ticket</h2>
-            <ul>
+            <ul className = "number-list">
                 {selectedNumbers.map((number, index) => (
-                    <li key={index}>{number}</li>
+                    <li key={index}> Derek: {number}</li>
                 ))}
             </ul>
+            <p className = "total"> Total: ${cashTotal}</p>
         </div>
     );
 }
